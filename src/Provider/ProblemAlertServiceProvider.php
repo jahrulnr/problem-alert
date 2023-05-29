@@ -28,7 +28,7 @@ class ProblemAlertServiceProvider extends ServiceProvider {
 
    $this->publishes([
     __DIR__.
-    '/../../database/migrations/create_visits_table.php.stub' => database_path("/migrations/{$timestamp}_create_problems_table.php"),
+    '/../../database/migrations/create_problems_table.php.stub' => database_path("/migrations/{$timestamp}_create_problems_table.php"),
    ], 'migrations');
   }
  }
