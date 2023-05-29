@@ -18,7 +18,7 @@ class ProblemAlertServiceProvider extends ServiceProvider {
   $this->publishes(
    [
     __DIR__.
-    '/../../config/visitor.php' => config_path('visitor.php'),
+    '/../../config/problem.php' => config_path('problem.php'),
    ],
    'config'
   );
