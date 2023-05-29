@@ -46,10 +46,7 @@
      "laravel": {
          "providers": [
              "BangunSoft\\ProblemAlert\\Provider\\ProblemAlertServiceProvider"
-         ],
-         "aliases": {
-             "ProblemAlert": "BangunSoft\\ProblemAlert\\Facade\\ProblemAlert"
-         }
+         ]
      }
  },
  "config": {
