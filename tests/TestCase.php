@@ -2,19 +2,30 @@
 
 namespace BangunSoft\ProblemAlert\Tests;
 
-use Orchestra\Testbench\TestCase as BaseTestCase;
+use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use BangunSoft\ProblemAlert\Provider\ProblemAlertServiceProvider;
+use BangunSoft\ProblemAlert\Exception\ProblemAlertExceptionHandler;
 
-class TestCase extends BaseTestCase
+abstract class TestCase extends BaseTestCase
 {
- protected function getPackageProviders($app)
+ protected function setUp(): void
  {
-  return ['BangunSoft\ProblemAlert\Provider\ProblemAlertServiceProvider'];
+  parent::setUp();
+
+  $this->app->register(ProblemAlertServiceProvider::class);
+
+  $this->app->singleton(
+   \Illuminate\Contracts\Debug\ExceptionHandler::class,
+   ProblemAlertExceptionHandler::class
+  );
+
+  // Additional setup code specific to your package, if any
  }
 
- protected function getPackageException($app)
+ protected function getEnvironmentSetUp($app)
  {
-  return [
-   'Visitor' => 'BangunSoft\ProblemAlert\Exception\ProblemAlertExceptionHandler',
-  ];
+  // Environment setup code specific to your package, if any
  }
+
+    // Define your package-specific helper methods or custom assertions here, if any
 }
