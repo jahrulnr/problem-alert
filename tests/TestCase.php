@@ -3,7 +3,6 @@
 namespace BangunSoft\ProblemAlert\Tests;
 
 use Orchestra\Testbench\TestCase as BaseTestCase;
-use BangunSoft\ProblemAlert\Tests\Mocks\Drivers\BarDriver;
 
 class TestCase extends BaseTestCase
 {
