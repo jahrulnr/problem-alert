@@ -8,7 +8,10 @@ return [
 
  //catch error if listed
  'status_code' => [
-   500
+    403,
+    404,
+    405,
+    500
  ],
 
 
