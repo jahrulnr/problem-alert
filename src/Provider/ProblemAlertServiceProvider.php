@@ -4,7 +4,6 @@ namespace BangunSoft\ProblemAlert\Provider;
 
 use BangunSoft\ProblemAlert\Exception\ProblemAlertExceptionHandler;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Sanctum\Sanctum;
 
 class ProblemAlertServiceProvider extends ServiceProvider {
  /**
@@ -14,7 +13,7 @@ class ProblemAlertServiceProvider extends ServiceProvider {
   */
  public function boot() {
   if (app()->runningInConsole()) {
-   $this->registerMigrations();
+   $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
    $this->publishes([
     __DIR__.'/../../database/migrations' => database_path("migrations"),
@@ -48,17 +47,5 @@ class ProblemAlertServiceProvider extends ServiceProvider {
    \Illuminate\Contracts\Debug\ExceptionHandler::class,
    ProblemAlertExceptionHandler::class
   );
- }
-
- /**
-  * Register Sanctum's migration files.
-  *
-  * @return void
-  */
- protected function registerMigrations()
- {
-  if (Sanctum::shouldRunMigrations()) {
-   return $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-  }
  }
 }

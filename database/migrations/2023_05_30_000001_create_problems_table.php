@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProblemAlertTable extends Migration
+// class CreateProblemAlertTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -18,8 +19,8 @@ class CreateProblemAlertTable extends Migration
             $table->string('status_code');
             $table->string('method');
             $table->text('filename');
-            $table->text('line')->nullable();
-            $table->string('hit')->default(0);
+            $table->string('line')->nullable();
+            $table->string('hit')->default(1);
             $table->string('time');
             $table->timestamps();
         });
@@ -34,4 +35,4 @@ class CreateProblemAlertTable extends Migration
     {
         Schema::dropIfExists(config('problem.table_name'));
     }
-}
+};

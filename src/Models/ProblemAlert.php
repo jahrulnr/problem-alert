@@ -28,22 +28,23 @@ class ProblemAlert extends Model
   'time',
  ];
 
- function scopeAddLog($statusCode, $file, $line){
-	$model = static::where('status_code', $statusCode)
-		->where("file", $file)
-		->where('line', $line)->first();
-	if($model){
-		$model->hit++;
-		$model->save();
-	}
-	else{
-		static::create([
-			'status_code' => $statusCode, 
-			'method' => request()->getMethod(), 
-			'filename' => $file, 
-			'line' => $line,
-			'time' => time(),
-		]);
-	}
+ function scopeAddLog($query, $statusCode, $file, $line){
+		$model = $query->where('status_code', $statusCode)
+			->where("filename", $file)
+			->where('line', $line);
+		if($model->count() > 0){
+			$model = $model->first();
+			$model->hit++;
+			$model->save();
+		}
+		else{
+			static::create([
+				'status_code' => $statusCode, 
+				'method' => request()->getMethod(), 
+				'filename' => $file, 
+				'line' => $line,
+				'time' => time(),
+			]);
+		}
  }
 }
