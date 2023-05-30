@@ -6,7 +6,7 @@ For now, this library just support for laravel 10 but I will develop support for
 
 ## Installing
 Add the below lines to composer.json
-``` json
+```javascript
 {
  "repositories": [
   {
