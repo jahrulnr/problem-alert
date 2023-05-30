@@ -2,30 +2,21 @@
 
 namespace BangunSoft\ProblemAlert\Tests;
 
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Tests\TestCase as BaseTestCase;
+use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Contracts\Debug\ExceptionHandler;
 use BangunSoft\ProblemAlert\Provider\ProblemAlertServiceProvider;
 use BangunSoft\ProblemAlert\Exception\ProblemAlertExceptionHandler;
+use BangunSoft\ProblemAlert\Models\ProblemAlert;
 
-abstract class TestCase extends BaseTestCase
+class TestCase extends BaseTestCase
 {
- protected function setUp(): void
- {
-  parent::setUp();
+ 	public function testLib(): void
+ 	{
+		$response = $this->json('GET', '/404_url', []);
+		$response->assertStatus(404);
 
-  $this->app->register(ProblemAlertServiceProvider::class);
-
-  $this->app->singleton(
-   \Illuminate\Contracts\Debug\ExceptionHandler::class,
-   ProblemAlertExceptionHandler::class
-  );
-
-  // Additional setup code specific to your package, if any
- }
-
- protected function getEnvironmentSetUp($app)
- {
-  // Environment setup code specific to your package, if any
- }
-
-    // Define your package-specific helper methods or custom assertions here, if any
+		$count = ProblemAlert::where('filename', '404_url')->count();
+		assert($count > 0);
+	}
 }

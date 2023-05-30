@@ -30,6 +30,7 @@ class ProblemAlertExceptionHandler extends ExceptionHandler
   $file = request()->path();
   $line = null;
   $exc = get_class($exception);
+  // dd($url);
 
   if($exception instanceof BadRequestHttpException){
    $statusCode = 400;
