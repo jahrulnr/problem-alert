@@ -5,30 +5,15 @@ Problem Alert is laravel library for handling error and saving this to database.
 For now, this library just support for laravel 10 but I will develop support for older version.
 
 ## Installing
-Add the below lines to composer.json
-```javascript
-{
- "repositories": [
-  {
-   "url": "https://github.com/jahrulnr/problem-alert.git",
-   "type": "git"
-  }
- ],
- "require": {
-  /// other line
-  "bangunsoft/problem-alert": "*"
- },
-}
-```
-After that, you can open terminal and run
+You can install this library using composer
 ```terminal
-composer update
+composer require bangunsoft/problem-alert
 php artisan vendor:publish --tag=problem-config
 ```
 
 ## Progress
 - Catch errors (Done)
-- Catch http request if not 2xx
+- Catch http request if not 2xx (Done)
 - MVC
 
 ## Contribute

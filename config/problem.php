@@ -3,7 +3,7 @@ return [
 
  //except save request or route names
  'except' =>  [
-  // '/login'
+  // 'login'
  ],
 
  //catch error if listed
