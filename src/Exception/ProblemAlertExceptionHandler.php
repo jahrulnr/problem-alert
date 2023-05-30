@@ -27,7 +27,7 @@ class ProblemAlertExceptionHandler extends ExceptionHandler
  public function render($request, \Throwable $exception)
  {
   $url = request()->path();
-  $file = request()->path();
+  $file = null;
   $line = null;
   $exc = get_class($exception);
   // dd($url);

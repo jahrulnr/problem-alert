@@ -12,19 +12,20 @@ class ProblemAlertServiceProvider extends ServiceProvider {
   * @return void
   */
  public function boot() {
-  if (app()->runningInConsole()) {
-   $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+  $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
-   $this->publishes([
-    __DIR__.'/../../database/migrations' => database_path("migrations"),
-   ], 'problem-migrations');
+  $this->publishes([
+   __DIR__.'/../../database/migrations' => database_path("migrations"),
+  ], 'problem-migrations');
 
-   $this->publishes(
-    [
-     __DIR__.'/../../config/problem.php' => config_path('problem.php'),
-    ], 'problem-config'
-   );
-  }
+  $this->publishes(
+   [
+    __DIR__.'/../../config/problem.php' => config_path('problem.php'),
+   ], 'problem-config'
+  );
+
+  $this->loadRoutesFrom(__DIR__.'/../Route/web.php');
+  $this->loadViewsFrom(__DIR__.'/../View', 'problem_alert');
  }
 
  /**
