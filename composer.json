@@ -1,7 +1,7 @@
 {
    "name": "bangunsoft/problem-alert",
    "type": "library",
-   "description": "Give Errors Report for Laravel",
+   "description": "Captures non-2xx responses and storing them in a database for analysis and monitoring purposes",
    "keywords": [
       "bangunsoft",
       "problem alert",
