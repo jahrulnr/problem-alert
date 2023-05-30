@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('method');
             $table->text('filename');
             $table->string('line')->nullable();
+            $table->string('exception');
             $table->string('hit')->default(1);
             $table->string('time');
             $table->timestamps();

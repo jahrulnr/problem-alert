@@ -24,14 +24,16 @@ class ProblemAlert extends Model
   'method', 
   'filename', 
   'line',
+		'exception',
   'hit', 
   'time',
  ];
 
- function scopeAddLog($query, $statusCode, $file, $line){
+ function scopeAddLog($query, $statusCode, $file, $line, $exception){
 		$model = $query->where('status_code', $statusCode)
 			->where("filename", $file)
-			->where('line', $line);
+			->where('line', $line)
+			->where("exception", $exception);
 		if($model->count() > 0){
 			$model = $model->first();
 			$model->hit++;
@@ -43,6 +45,7 @@ class ProblemAlert extends Model
 				'method' => request()->getMethod(), 
 				'filename' => $file, 
 				'line' => $line,
+				'exception' => $exception,
 				'time' => time(),
 			]);
 		}
