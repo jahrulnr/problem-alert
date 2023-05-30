@@ -11,8 +11,8 @@ use BangunSoft\ProblemAlert\Models\ProblemAlert;
 
 class TestCase extends BaseTestCase
 {
- 	public function testLib(): void
- 	{
+	public function testLib(): void
+	{
 		$response = $this->json('GET', '/404_url', []);
 		$response->assertStatus(404);
 
