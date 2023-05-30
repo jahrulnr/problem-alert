@@ -89,7 +89,7 @@ class ProblemAlertExceptionHandler extends ExceptionHandler
    $line = $exception->getLine();
   }
 
-  if (in_array($statusCode, config('problem.status_code') ?? []) && !in_array($url, config('problem.config') ?? [])) {
+  if (in_array($statusCode, config('problem.status_code') ?? []) && !in_array($url, config('problem.except') ?? [])) {
    ProblemAlert::addLog($statusCode,$file,$line, $exc);
   }
 
