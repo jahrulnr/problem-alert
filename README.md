@@ -11,10 +11,18 @@ composer require bangunsoft/problem-alert
 php artisan vendor:publish --tag=problem-config
 ```
 
+## View Access
+- Login to your website
+- Open ```{APP_URL}/vendor/problems``` in your browser. 
+
+## Screenshoot
+![Sreenshoot](./screenshoot/view.png)
+
 ## Progress
 - Catch errors (Done)
 - Catch http request if not 2xx (Done)
-- MVC
+- MVC (Done)
+- I haven't idea
 
 ## Contribute
 If you want join to collaborations with me, I'm very happy for that. 

@@ -18,7 +18,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('status_code');
             $table->string('method');
-            $table->text('filename');
+            $table->text('url');
+            $table->text('filename')->nullable();
             $table->string('line')->nullable();
             $table->string('exception');
             $table->string('hit')->default(1);
