@@ -4,6 +4,7 @@ namespace BangunSoft\ProblemAlert\Provider;
 
 use BangunSoft\ProblemAlert\Exception\ProblemAlertExceptionHandler;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Sanctum\Sanctum;
 
 class ProblemAlertServiceProvider extends ServiceProvider {
  /**
@@ -12,24 +13,18 @@ class ProblemAlertServiceProvider extends ServiceProvider {
   * @return void
   */
  public function boot() {
-  /**
-   * Configurations that needs to be done by user.
-   */
-  $this->publishes(
-   [
-    __DIR__.
-    '/../../config/problem.php' => config_path('problem.php'),
-   ],
-   'config'
-  );
-
-  if (!class_exists('CreateProblemAlertTable')) {
-   $timestamp = date('Y_m_d_His', time());
+  if (app()->runningInConsole()) {
+   $this->registerMigrations();
 
    $this->publishes([
-    __DIR__.
-    '/../../database/migrations/create_problems_table.php.stub' => database_path("/migrations/{$timestamp}_create_problems_table.php"),
-   ], 'migrations');
+    __DIR__.'/../../database/migrations' => database_path("migrations"),
+   ], 'problem-migrations');
+
+   $this->publishes(
+    [
+     __DIR__.'/../../config/problem.php' => config_path('problem.php'),
+    ], 'problem-config'
+   );
   }
  }
 
@@ -43,8 +38,7 @@ class ProblemAlertServiceProvider extends ServiceProvider {
    * Load default configurations.
    */
   $this->mergeConfigFrom(
-   __DIR__.
-   '/../../config/problem.php', 'problem'
+   __DIR__.'/../../config/problem.php', 'problem'
   );
 
   /**
@@ -54,5 +48,17 @@ class ProblemAlertServiceProvider extends ServiceProvider {
    \Illuminate\Contracts\Debug\ExceptionHandler::class,
    ProblemAlertExceptionHandler::class
   );
+ }
+
+ /**
+  * Register Sanctum's migration files.
+  *
+  * @return void
+  */
+ protected function registerMigrations()
+ {
+  if (Sanctum::shouldRunMigrations()) {
+   return $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+  }
  }
 }

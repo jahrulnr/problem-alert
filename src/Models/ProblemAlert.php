@@ -9,7 +9,7 @@ class ProblemAlert extends Model
  public function __construct(array $attributes = [])
  {
   if (!isset($this->table)) {
-      $this->setTable(config('problem.table_name'));
+	  $this->setTable(config('problem.table_name'));
   }
   parent::__construct($attributes);
  }
@@ -29,21 +29,21 @@ class ProblemAlert extends Model
  ];
 
  function scopeAddLog($statusCode, $file, $line){
-    $model = static::where('status_code', $statusCode)
-        ->where("file", $file)
-        ->where('line', $line)->first();
-    if($model){
-        $model->hit++;
-        $model->save();
-    }
-    else{
-        static::create([
-            'status_code' => $statusCode, 
-            'method' => request()->getMethod(), 
-            'filename' => $file, 
-            'line' => $line,
-            'time' => time(),
-        ]);
-    }
+	$model = static::where('status_code', $statusCode)
+		->where("file", $file)
+		->where('line', $line)->first();
+	if($model){
+		$model->hit++;
+		$model->save();
+	}
+	else{
+		static::create([
+			'status_code' => $statusCode, 
+			'method' => request()->getMethod(), 
+			'filename' => $file, 
+			'line' => $line,
+			'time' => time(),
+		]);
+	}
  }
 }
