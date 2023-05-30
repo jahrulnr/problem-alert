@@ -12,8 +12,8 @@ php artisan vendor:publish --tag=problem-config
 ```
 
 ## View Access
-Open ```{APP_URL}/vendor/problems``` in your browser. 
-Library will showing result using Datatables.
+- Login to your website
+- Open ```{APP_URL}/vendor/problems``` in your browser. 
 
 ## Screenshoot
 ![Sreenshoot](./screenshoot/view.png)
