@@ -12,7 +12,6 @@ class ProblemAlertServiceProvider extends ServiceProvider {
   * @return void
   */
  public function boot() {
-  $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
   $this->publishes([
    __DIR__.'/../../database/migrations' => database_path("migrations"),
@@ -24,6 +23,7 @@ class ProblemAlertServiceProvider extends ServiceProvider {
    ], 'problem-config'
   );
 
+  $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
   $this->loadRoutesFrom(__DIR__.'/../Route/web.php');
   $this->loadViewsFrom(__DIR__.'/../View', 'problem_alert');
  }
