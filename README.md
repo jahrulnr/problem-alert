@@ -2,7 +2,7 @@
 Problem Alert is laravel library for handling error and saving this to database.
 
 ## Laravel Support
-- Laravel 8++
+- Laravel 6++
 
 ## Installing
 You can install this library using composer

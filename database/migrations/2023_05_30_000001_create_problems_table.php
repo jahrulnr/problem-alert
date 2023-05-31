@@ -4,8 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-// class CreateProblemAlertTable extends Migration
-return new class extends Migration
+// php7.4 artisan migrate --path=/vendor/bangunsoft/problem-alert/database/migrations/2023_05_30_000001_create_problems_table.php
+class CreateProblemsTable extends Migration
+// return new class extends Migration
 {
     /**
      * Run the migrations.
