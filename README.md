@@ -21,6 +21,33 @@ Or you can use
 php artisan migrate --path=/vendor/bangunsoft/problem-alert/database/migrations/2023_05_30_000001_create_problems_table.php
 ```
 
+## Configuration
+After config published, You can configure the package at ```config/problem.php```
+```php
+<?php
+return [
+
+	//except save request
+	'except' =>  [
+  	// 'login'
+ 	],
+
+ 	//catch error if listed
+ 	'status_code' => [
+		403,
+		404,
+		500
+	],
+
+	// who can access
+	// default is web & auth
+ 	'middleware' => ['web', 'auth'],
+
+ 	//name of the table which visit records should save in
+	'table_name' =>  'site_problems',
+];
+```
+
 ## View Access
 - Login to your website
 - Open ```{APP_URL}/vendor/problems``` in your browser. 

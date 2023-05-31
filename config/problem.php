@@ -15,8 +15,8 @@ return [
 
 	// who can access
 	// default is web & auth
- 'middleware' => ['web', 'auth'],
+ 	'middleware' => ['web', 'auth'],
 
  	//name of the table which visit records should save in
- 	'table_name' =>  'site_problems',
+	'table_name' =>  'site_problems',
 ];
