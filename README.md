@@ -9,7 +9,16 @@ You can install this library using composer
 ```terminal
 composer require bangunsoft/problem-alert
 php artisan vendor:publish --tag=problem-config
+```
+
+## Migrate Database
+You must migrate database after install this package
+```terminal
 php artisan migrate
+```
+Or you can use
+```terminal
+php artisan migrate --path=/vendor/bangunsoft/problem-alert/database/migrations/2023_05_30_000001_create_problems_table.php
 ```
 
 ## View Access
