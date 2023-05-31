@@ -12,7 +12,7 @@ php artisan vendor:publish --tag=problem-config
 ```
 
 ## Migrate Database
-You must migrate database after install this package
+You must migrate database after install this library
 ```terminal
 php artisan migrate
 ```
@@ -22,7 +22,7 @@ php artisan migrate --path=/vendor/bangunsoft/problem-alert/database/migrations/
 ```
 
 ## Configuration
-After config published, You can configure the package at ```config/problem.php```
+After config published, You can configure the library at ```config/problem.php```
 ```php
 <?php
 return [
